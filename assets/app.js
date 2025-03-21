@@ -16,14 +16,19 @@ function supprimer() {
             // Button that triggered the modal
             const button = event.relatedTarget
             // Extract info from data-bs-* attributes
-            const category = button.getAttribute('data-bs-id')
-
+            const category = button.getAttribute('data-bs-categoryId')
+            const product = button.getAttribute('data-bs-productId')
             const supprimer = document.querySelector("#supprimer")
-            console.log(button)
-            console.log(category)
-            console.log(supprimer)
 
-            supprimer.setAttribute("href", `/admin/category/remove/${category}`)
+            if (category) {
+                supprimer.setAttribute("href", `/admin/category/remove/${category}`)
+            }
+
+            if (product) {
+                supprimer.setAttribute("href", `/admin/product/remove/${product}`)
+            }
+
+
         })
     }
 }

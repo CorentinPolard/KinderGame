@@ -10,13 +10,6 @@
 <h2>Liste des catégories</h2>
 <a href="{{ path('app_admin_add_category') }}" class="btn btn-primary">Ajouter une catégorie</a>
 
-{# {{ form_start(form) }}
-
-{{ form_row(form.label) }}
-<button type="submit" class="btn btn-primary">Ajouter</button>
-
-{{ form_end(form) }} #}
-
 <table class="mt-3">
     <thead>
         <tr>
@@ -32,8 +25,8 @@
         <td>
             <a href="{{ path('app_admin_category.show', {id: category.id}) }}" class="btn btn-primary">Voir</a>
             <a href="{{ path('app_admin_update_category', {id: category.id}) }}" class="btn btn-primary">Modifier</a>
-            <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal" data-bs-id="{{category.id}}"
-                data-bs-target="#deleteModal">
+            <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal"
+                data-bs-categoryId="{{category.id}}" data-bs-target="#deleteModal">
                 Supprimer
             </button>
         </td>

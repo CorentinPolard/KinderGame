@@ -24,10 +24,35 @@
             <td>
                 <a href="{{ path('app_admin_product.show', {id: product.id}) }}" class="btn btn-primary">Voir</a>
                 <a href="{{ path('app_admin_update_product', {id: product.id}) }}" class="btn btn-primary">Modifier</a>
-                <a href="{{ path('app_admin_remove_product', {id: product.id}) }}" class="btn btn-primary">Supprimer</a>
+                <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal"
+                    data-bs-productId="{{product.id}}" data-bs-target="#deleteModal">
+                    Supprimer
+                </button>
             </td>
         </tr>
         {% endfor %}
     </table>
+</div>
+
+<!-- deleteModal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-bg-light" id="deleteModalLabel">Suppression</h1>
+            </div>
+            <div class="modal-body">
+                <p class="text-bg-light">
+                    Êtes-vous sur de vouloir supprimer ce jeu ?
+                    <br>
+                    Revenir en arrière ne sera plus possible.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <a href="#" id="supprimer" class="btn btn-secondary">Supprimer</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
