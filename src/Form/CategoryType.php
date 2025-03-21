@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class CategoryType extends AbstractType
 {
@@ -18,7 +19,10 @@ class CategoryType extends AbstractType
                 'required' => true,
             ])
             // ->add('color')
-        ;
+            ->add('_token', HiddenType::class, [
+                'mapped' => false,
+                'csrf_protection' => true
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

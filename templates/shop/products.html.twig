@@ -12,7 +12,7 @@ All Games
 
   <div class="col-lg-4 mt-3">
     <div class="card">
-      <img src="{{ product.media }}" class="card-img-top img-card" alt="...">
+      <img src="{{ asset('uploads/medias/' ~ product.media) }}" class="card-img-top img-card" alt="...">
       <div class="card-body">
         <h5 class="card-title d-inline">{{ product.label }}</h5>
         {% if product.isReduced == 1 %}

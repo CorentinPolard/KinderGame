@@ -32,11 +32,10 @@
         <td>
             <a href="{{ path('app_admin_category.show', {id: category.id}) }}" class="btn btn-primary">Voir</a>
             <a href="{{ path('app_admin_update_category', {id: category.id}) }}" class="btn btn-primary">Modifier</a>
-            {# <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal"
-                data-bs-id="{{category.id}}" data-bs-target="#deleteModal">
+            <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal" data-bs-id="{{category.id}}"
+                data-bs-target="#deleteModal">
                 Supprimer
-            </button> #}
-            <a href="{{ path('app_admin_remove_category', {id: category.id}) }}" class="btn btn-primary">Supprimer</a>
+            </button>
         </td>
     </tr>
     {% endfor %}
@@ -45,7 +44,7 @@
 
 
 <!-- deleteModal -->
-{# <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,5 +63,5 @@
             </div>
         </div>
     </div>
-</div> #}
+</div>
 {% endblock %}

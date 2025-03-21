@@ -7,7 +7,7 @@
 {% block main %}
 <h1>{{product.label}}</h1>
 
-<img src="{{product.media}}" class="img-resizing">
+<img src="{{asset('uploads/medias/' ~ product.media)}}" class="img-resizing">
 
 <ul>
   <li><a href="{{path('shop_category',{category_id: product.category.id})}}">{{product.category.label}}</a></li>
@@ -34,13 +34,15 @@
 {% endif %}
 
 
+<h2>Produits similaires</h2>
+
 <div class="row mt-3">
 
   {% for similar in similars %}
 
   <div class="col-lg-4 mt-3">
     <div class="card">
-      <img src="{{ similar.media }}" class="card-img-top img-card" alt="...">
+      <img src="{{ asset('uploads/medias/' ~ similar.media) }}" class="card-img-top img-card" alt="...">
       <div class="card-body">
         <h5 class="card-title d-inline">{{ similar.label }}</h5>
         {% if similar.isReduced == 1 %}

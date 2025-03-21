@@ -11,7 +11,7 @@
         <h2>{{product.label}}</h2>
         <p>{{ product.category.label }}</p>
     </div>
-    <img src="{{product.media}}" class="img-resizing">
+    <img src="{{ asset('uploads/medias/' ~ product.media) }}" class="img-resizing">
     <p>Description : {{product.description}}</p>
 
     {% if product.isReduced == 1 %}

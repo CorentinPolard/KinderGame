@@ -1,4 +1,5 @@
-import './bootstrap.js';
+
+// import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -8,27 +9,30 @@ import './bootstrap.js';
 import './styles/app.css';
 
 
-// function supprimer() {
-//     const exampleModal = document.getElementById('deleteModal')
-//     if (exampleModal) {
-//         exampleModal.addEventListener('show.bs.modal', event => {
-//             // Button that triggered the modal
-//             const button = event.relatedTarget
-//             // Extract info from data-bs-* attributes
-//             const category = button.getAttribute('data-bs-id')
+function supprimer() {
+    const exampleModal = document.getElementById('deleteModal')
+    if (exampleModal) {
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const category = button.getAttribute('data-bs-id')
 
-//             const supprimer = document.querySelector("#supprimer")
+            const supprimer = document.querySelector("#supprimer")
+            console.log(button)
+            console.log(category)
+            console.log(supprimer)
 
-//             supprimer.setAttribute("href", `/admin/category/remove/${category}`)
-//         })
-//     }
-// }
+            supprimer.setAttribute("href", `/admin/category/remove/${category}`)
+        })
+    }
+}
 
-// const showModal = document.querySelectorAll(".showModal")
+const showModal = document.querySelectorAll(".showModal")
 
-// for (let button of showModal) {
-//     button.addEventListener('click', supprimer())
-// }
+for (let button of showModal) {
+    button.addEventListener('click', supprimer())
+}
 
 
 
