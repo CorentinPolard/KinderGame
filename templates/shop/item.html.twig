@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{product.label}}
+{% endblock %}
+
+{% block main %}
+<h1>{{product.label}}</h1>
+
+<img src="{{product.media}}" class="img-resizing">
+
+<ul>
+  <li><a href="{{path('shop_category',{category_id: product.category.id})}}">{{product.category.label}}</a></li>
+</ul>
+
+<p>{{product.description}}</p>
+
+
+{% if product.isReduced == 1 %}
+
+<p class="text-decoration-line-through">{{ product.price }} € HT</p>
+
+<p class="text-decoration-line-through">{{ product.prixTTC }} € TTC</p>
+
+<p class="text-danger fw-bold fs-1">Promotion : {{ product.reducedPrice }} €</p>
+
+
+{% else %}
+
+<p>{{ product.price }} € HT</p>
+
+<p>{{ product.prixTTC }} € TTC</p>
+
+{% endif %}
+
+
+<div class="row mt-3">
+
+  {% for similar in similars %}
+
+  <div class="col-lg-4 mt-3">
+    <div class="card">
+      <img src="{{ similar.media }}" class="card-img-top img-card" alt="...">
+      <div class="card-body">
+        <h5 class="card-title d-inline">{{ similar.label }}</h5>
+        {% if similar.isReduced == 1 %}
+
+        <p class="text-danger fw-bold d-inline">PROMO</p>
+
+        {% endif %}
+        <p class="card-text">{{ similar.description }}</p>
+        <a href="{{path('shop_item',{item: similar.label})}}" class="btn btn-primary">Voir le jeu</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}

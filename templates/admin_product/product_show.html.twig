@@ -1,0 +1,26 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello AdminCategoryController!{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h1>Hello Admin! ✅</h1>
+    <p>Vous êtes sur une fiche produit</p>
+    <div class="d-flex align-items-baseline gap-3">
+        <h2>{{product.label}}</h2>
+        <p>{{ product.category.label }}</p>
+    </div>
+    <img src="{{product.media}}" class="img-resizing">
+    <p>Description : {{product.description}}</p>
+
+    {% if product.isReduced == 1 %}
+    <p class="text-decoration-line-through">{{ product.price }} € HT</p>
+    <p class="text-danger fw-bold fs-1">Promotion : {{ product.reducedPrice }} €</p>
+    {% else %}
+    <p>{{ product.price }} € HT</p>
+    {% endif %}
+
+    <a href="{{ path('app_admin_product') }}">Retour sur la liste des produits</a>
+</div>
+{% endblock %}

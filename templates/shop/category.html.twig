@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Game category
+{% endblock %}
+
+{% block main %}
+
+<div class="row mt-3">
+
+  {% for product in products %}
+
+  <div class="col-lg-4 mt-3">
+    <div class="card">
+      <img src="{{ product.media }}" class="card-img-top img-card" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.label }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <a href="{{path('shop_item',{item: product.label})}}" class="btn btn-primary">Voir le jeu</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block main %}
+
+{{ form_start(form) }}
+
+{{ form_row(form.label) }}
+<button type="submit" class="btn btn-primary">Valider</button>
+
+{{ form_end(form) }}
+
+<a href="{{ path('app_admin_category')}}">Retour à la liste des catégories</a>
+
+{% endblock %}

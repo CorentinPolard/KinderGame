@@ -1,0 +1,33 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h1>Hello Admin! ✅</h1>
+    <p>Vous êtes sur la page des produits</p>
+    <h2>Liste des produits</h2>
+    <a href="{{ path('app_admin_add_product') }}" class="btn btn-primary">Ajouter un produit</a>
+    <table class="mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.label }}</td>
+            <td>
+                <a href="{{ path('app_admin_product.show', {id: product.id}) }}" class="btn btn-primary">Voir</a>
+                <a href="{{ path('app_admin_update_product', {id: product.id}) }}" class="btn btn-primary">Modifier</a>
+                <a href="{{ path('app_admin_remove_product', {id: product.id}) }}" class="btn btn-primary">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

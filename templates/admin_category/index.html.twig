@@ -1,0 +1,68 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block main %}
+
+
+<h1>Hello Admin! ✅</h1>
+<p>Vous êtes sur la page des catégories</p>
+<h2>Liste des catégories</h2>
+<a href="{{ path('app_admin_add_category') }}" class="btn btn-primary">Ajouter une catégorie</a>
+
+{# {{ form_start(form) }}
+
+{{ form_row(form.label) }}
+<button type="submit" class="btn btn-primary">Ajouter</button>
+
+{{ form_end(form) }} #}
+
+<table class="mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    {% for category in categories %}
+    <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.label }}</td>
+        <td>
+            <a href="{{ path('app_admin_category.show', {id: category.id}) }}" class="btn btn-primary">Voir</a>
+            <a href="{{ path('app_admin_update_category', {id: category.id}) }}" class="btn btn-primary">Modifier</a>
+            {# <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal"
+                data-bs-id="{{category.id}}" data-bs-target="#deleteModal">
+                Supprimer
+            </button> #}
+            <a href="{{ path('app_admin_remove_category', {id: category.id}) }}" class="btn btn-primary">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+<!-- deleteModal -->
+{# <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-bg-light" id="deleteModalLabel">Suppression</h1>
+            </div>
+            <div class="modal-body">
+                <p class="text-bg-light">
+                    Êtes-vous sur de vouloir supprimer cette catégorie ?
+                    <br>
+                    Revenir en arrière ne sera plus possible.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <a href="#" id="supprimer" class="btn btn-secondary">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div> #}
+{% endblock %}

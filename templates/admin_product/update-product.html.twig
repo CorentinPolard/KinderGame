@@ -1,0 +1,23 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block main %}
+<h1>Modifier un jeu</h1>
+
+{{ form_start(form) }}
+
+{{ form_row(form.label) }}
+{{ form_row(form.price) }}
+{{ form_row(form.description) }}
+{{ form_row(form.media) }}
+{{ form_row(form.isReduced) }}
+{{ form_row(form.category) }}
+
+<button type="submit" class="btn btn-primary">Valider</button>
+
+{{ form_end(form) }}
+
+<a href="{{ path('app_admin_product')}}">Retour à la liste des produits</a>
+
+{% endblock %}

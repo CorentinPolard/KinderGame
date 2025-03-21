@@ -1,0 +1,13 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block title %}Hello AdminCategoryController!{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h1>Hello Admin! ✅</h1>
+    <p>Vous êtes sur la page des catégories</p>
+    <h2>{{categorie.label}}</h2>
+    <a href="{{ path('app_admin_category') }}">Retour sur la liste des catégories</a>
+</div>
+{% endblock %}
