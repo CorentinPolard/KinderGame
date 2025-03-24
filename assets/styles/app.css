@@ -38,6 +38,11 @@ nav, footer {
 }
 
 /*  Only admin style */
+
+.main-admin {
+    padding-left: 50px;
+}
+
 .logo-admin {
     width: 125px;
     height: 125px;
