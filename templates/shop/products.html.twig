@@ -28,15 +28,20 @@ All Games
 
   {% endfor %}
 
-  <div class="d-flex">
-    {% if page > 1 %}
-    <a href="{{ path('shop_products', { page: page - 1 })  }}" class="btn btn-secondary mt-3">Page précédente</a>
-    {% endif %}
-    {% if page < maxPages %} <a href="{{ path('shop_products', { page: page + 1 })  }}" class="btn btn-secondary mt-3">
-      Page
-      suivante</a>
-      {% endif %}
+  <div class="d-flex justify-content-between mt-3">
   </div>
+
+  <div class="parent">
+    {% if page > 1 %}
+    <div class="d-flex justify-content-start prev">
+      <a href="{{ path('shop_products', { page: page - 1 })  }}" class="btn btn-secondary mt-3">Page précédente</a>
+    </div>
+    {% endif %}
+    {% if page < maxPages %} <div class="d-flex justify-content-end next">
+      <a href="{{ path('shop_products', { page: page + 1 })  }}" class="btn btn-secondary mt-3">Page suivante</a>
+  </div>
+  {% endif %}
+</div>
 
 </div>
 

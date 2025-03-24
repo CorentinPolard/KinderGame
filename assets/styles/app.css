@@ -1,24 +1,31 @@
 body {
     background-color: rgb(16, 16, 70);
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; */
 }
 
 main {
-    flex: 1;
+    /* flex: 1; */
     color: white; 
 }
 
-nav {
+nav, footer {
     background-color: indigo;
     color: white;
 }
 
-footer {
-    color: white;
-    background-color: indigo;
+.list-unstyled {
+    list-style: none;
+    padding: 30px;
+    font-size: 1.5em;
 }
+
+.logo {
+    width: 75px;
+    height: 75px;
+}
+
 
 .img-card {
     height: 200px;
@@ -28,6 +35,12 @@ footer {
 .img-resizing {
     max-width: 70%;
     max-height: 400px;
+}
+
+/*  Only admin style */
+.logo-admin {
+    width: 125px;
+    height: 125px;
 }
 
 thead {
@@ -47,3 +60,31 @@ td {
   border: 1px solid rgb(160 160 160);
   padding: 8px 10px;
 }
+
+
+.btn-admin:hover {
+    border: solid 1px white;
+}
+
+.logout-admin {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    background-color: indigo;
+}
+
+.logout-admin:hover {
+    border: solid 1px white;
+}
+
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 0px;
+    }
+    
+.prev { grid-area: 1 / 1 / 2 / 2; }
+.next { grid-area: 1 / 2 / 2 / 3; }

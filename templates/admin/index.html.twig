@@ -1,11 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin-base.html.twig' %}
 
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block main %}
-<h1>Hello Admin</h1>
-<ul>
-    <li><a href="{{ path('app_admin_category') }}">Gérer les categories</a></li>
-    <li><a href="{{ path('app_admin_product') }}">Gérer les produits</a></li>
-</ul>
+<div class="h-100 d-flex justify-content-center align-items-center">
+    <h1>Hello Admin</h1>
+</div>
 {% endblock %}

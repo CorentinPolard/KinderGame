@@ -6,6 +6,12 @@
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
+
+// Je prends le css de boostrap
+import './vendor/bootstrap/dist/css/bootstrap.min.css';
+// Je prends le js
+import 'bootstrap';
+// Mon css
 import './styles/app.css';
 
 

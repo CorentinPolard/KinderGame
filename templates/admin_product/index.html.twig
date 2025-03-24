@@ -3,36 +3,50 @@
 {% block title %}Hello !{% endblock %}
 
 {% block main %}
-
-<div class="container">
-    <h1>Hello Admin! ✅</h1>
-    <p>Vous êtes sur la page des produits</p>
-    <h2>Liste des produits</h2>
-    <a href="{{ path('app_admin_add_product') }}" class="btn btn-primary">Ajouter un produit</a>
-    <table class="mt-3">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        {% for product in products %}
+<h1 class="mt-3">Liste des produits</h1>
+<a href="{{ path('app_admin_add_product') }}" class="btn btn-primary">Ajouter un produit</a>
+<table class="mt-3">
+    <thead>
         <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.label }}</td>
-            <td>
-                <a href="{{ path('app_admin_product.show', {id: product.id}) }}" class="btn btn-primary">Voir</a>
-                <a href="{{ path('app_admin_update_product', {id: product.id}) }}" class="btn btn-primary">Modifier</a>
-                <button type="button" class="btn btn-primary showModal" data-bs-toggle="modal"
-                    data-bs-productId="{{product.id}}" data-bs-target="#deleteModal">
-                    Supprimer
-                </button>
-            </td>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix TTC (en €)</th>
+            <th>Actions</th>
         </tr>
-        {% endfor %}
-    </table>
-</div>
+    </thead>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>
+            {{ product.label }}
+            {% if product.isReduced %}
+            - <span class="text-danger fw-bold d-inline">En promo</span>
+            {% endif %}
+        </td>
+        <td>
+            {% if product.isReduced %}
+            <span class="text-decoration-line-through">{{ product.prixTTC }}</span>
+            -->
+            <span class="text-danger fw-bold">{{ product.reducedPrice }}</span>
+            {% else %}
+            {{ product.prixTTC }}
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ path('app_admin_product.show', {id: product.id}) }}" class="btn btn-admin">
+                <img src="{{ asset('images/view.svg') }}" alt="Bouton de vue">
+            </a>
+            <a href="{{ path('app_admin_update_product', {id: product.id}) }}" class="btn btn-admin">
+                <img src="{{ asset('images/edit.svg') }}" alt="Bouton de modification">
+            </a>
+            <button type="button" class="btn btn-admin showModal" data-bs-toggle="modal"
+                data-bs-productId="{{product.id}}" data-bs-target="#deleteModal">
+                <img src="{{ asset('images/trash.svg') }}" alt="Bouton de suppression">
+            </button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 <!-- deleteModal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
