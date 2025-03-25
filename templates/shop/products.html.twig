@@ -6,6 +6,15 @@ All Games
 
 {% block main %}
 
+<div class="dropdown">
+  <button class="dropbtn">Trier par catégorie</button>
+  <div class="dropdown-content">
+    {% for category in categories %}
+    <a href="{{ path('shop_category', {category_id: category.id}) }}">{{ category.label }}</a>
+    {% endfor %}
+  </div>
+</div>
+
 <div class="row mt-3">
 
   {% for product in products %}
@@ -20,7 +29,7 @@ All Games
         <p class="text-danger fw-bold d-inline">PROMO</p>
 
         {% endif %}
-        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text description">{{ product.description }}</p>
         <a href="{{path('shop_item',{item: product.label})}}" class="btn btn-primary">Voir le jeu</a>
       </div>
     </div>

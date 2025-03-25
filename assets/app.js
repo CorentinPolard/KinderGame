@@ -5,7 +5,7 @@
  *
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
- */
+*/
 
 // Je prends le css de boostrap
 import './vendor/bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +14,9 @@ import 'bootstrap';
 // Mon css
 import './styles/app.css';
 
+console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
+// Suppression d'un produit ou d'une catégorie coté admin
 function supprimer() {
     const exampleModal = document.getElementById('deleteModal')
     if (exampleModal) {
@@ -45,6 +47,3 @@ for (let button of showModal) {
     button.addEventListener('click', supprimer())
 }
 
-
-
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

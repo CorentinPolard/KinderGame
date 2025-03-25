@@ -7,13 +7,16 @@ body {
 
 main {
     /* flex: 1; */
-    color: white; 
+    color: white;
 }
 
-nav, footer {
+/* Style navBar */
+nav,
+footer {
     background-color: indigo;
     color: white;
 }
+
 
 .list-unstyled {
     list-style: none;
@@ -26,12 +29,87 @@ nav, footer {
     height: 75px;
 }
 
+/* Style sélécteur de catégorie */
+.dropbtn {
+    background-color: indigo;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    background-color: indigo;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+/* Style des cards */
 .img-card {
     height: 200px;
     object-fit: cover;
 }
 
+.description {
+    height: 75px;
+    overflow: hidden;
+}
+
+/* Style boutons suivant et précédent  */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 0px;
+}
+
+.prev {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.next {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+/* Style pour les pages affichant un produit */
 .img-resizing {
     max-width: 70%;
     max-height: 400px;
@@ -49,7 +127,7 @@ nav, footer {
 }
 
 thead {
-  background-color: rgb(50, 50, 80);
+    background-color: rgb(50, 50, 80);
 }
 
 table {
@@ -58,12 +136,12 @@ table {
     font-family: sans-serif;
     font-size: 0.8rem;
     letter-spacing: 1px;
-  }
+}
 
-  th,
+th,
 td {
-  border: 1px solid rgb(160 160 160);
-  padding: 8px 10px;
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
 }
 
 
@@ -81,15 +159,3 @@ td {
 .logout-admin:hover {
     border: solid 1px white;
 }
-
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 25px;
-    grid-row-gap: 0px;
-    }
-    
-.prev { grid-area: 1 / 1 / 2 / 2; }
-.next { grid-area: 1 / 2 / 2 / 3; }

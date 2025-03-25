@@ -39,10 +39,10 @@ final class ShopController extends AbstractController
     // }
 
     #[Route('/products', name: 'shop_products')]
-    public function liste(ProductRepository $productRepository, Request $request): Response
+    public function liste(ProductRepository $productRepository, CategoryRepository $categoryRepository, Request $request): Response
     {
         // la variable limit est le nombre de produits par page que l'on veut
-        $limit = 3;
+        $limit = 6;
         // Notre variable page est égale à la valeur du paramètre 'page' dans l'URL
         $page = $request->query->getInt('page', 1);
 
@@ -51,6 +51,7 @@ final class ShopController extends AbstractController
         }
 
         $products = $productRepository->paginateProducts($page, $limit);
+        $categories = $categoryRepository->findAll();
 
         // compte le nombre de produit dans la bdd 
         // le divise par $limit 
@@ -63,6 +64,7 @@ final class ShopController extends AbstractController
                 'products' => $products,
                 'maxPages' => $maxPages,
                 'page' => $page,
+                'categories' => $categories,
             ]);
         } else {
             return $this->render('shop/notExist.html.twig');
@@ -87,13 +89,15 @@ final class ShopController extends AbstractController
     }
 
     #[Route('/category/{category_id}', name: 'shop_category')]
-    public function category(int $category_id, ProductRepository $productRepository): Response
+    public function category(int $category_id, ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
     {
 
         $productsByCategory = $productRepository->findBy(['category' => $category_id]);
+        $categories = $categoryRepository->findAll();
 
         return $this->render('shop/category.html.twig', [
             'products' => $productsByCategory,
+            'categories' => $categories,
         ]);
     }
 }
