@@ -26,10 +26,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{path('shop_index')}}">Accueil</a>
+                            <a class="nav-link" aria-current="page" href="{{path('shop_index')}}">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('shop_products')}}">Tous les jeux</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <button class="dropbtn nav-link">Jeux par catégorie</button>
+                            <div class="dropdown-content">
+                                {% set categories = getCategories() %}
+                                {% for category in categories %}
+                                <a class="nav-link" href="{{ path('shop_category', {category_id: category.id}) }}">{{
+                                    category.label
+                                    }}</a>
+                                {% endfor %}
+                            </div>
                         </li>
                         {% if app.user %}
                         {% if is_granted('ROLE_ADMIN') %}

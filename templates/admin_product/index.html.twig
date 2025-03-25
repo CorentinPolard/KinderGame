@@ -10,7 +10,7 @@
         <tr>
             <th>Id</th>
             <th>Nom</th>
-            <th>Prix TTC (en €)</th>
+            <th>Prix TTC</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,11 +25,11 @@
         </td>
         <td>
             {% if product.isReduced %}
-            <span class="text-decoration-line-through">{{ product.prixTTC }}</span>
+            <span class="text-decoration-line-through">{{ product.prixTTC|formatPrice }}</span>
             -->
-            <span class="text-danger fw-bold">{{ product.reducedPrice }}</span>
+            <span class="text-danger fw-bold">{{ product.reducedPrice|formatPrice }}</span>
             {% else %}
-            {{ product.prixTTC }}
+            {{ product.prixTTC|formatPrice }}
             {% endif %}
         </td>
         <td>

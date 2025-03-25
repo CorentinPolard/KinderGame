@@ -18,18 +18,18 @@
 
 {% if product.isReduced == 1 %}
 
-<p class="text-decoration-line-through">{{ product.price }} € HT</p>
+<p class="text-decoration-line-through">{{ product.price|formatPrice }} HT</p>
 
-<p class="text-decoration-line-through">{{ product.prixTTC }} € TTC</p>
+<p class="text-decoration-line-through">{{ product.prixTTC|formatPrice }} TTC</p>
 
-<p class="text-danger fw-bold fs-1">Promotion : {{ product.reducedPrice }} €</p>
+<p class="text-danger fw-bold fs-1">Promotion : {{ product.reducedPrice|formatPrice }} </p>
 
 
 {% else %}
 
-<p>{{ product.price }} € HT</p>
+<p>{{ product.price|formatPrice }} HT</p>
 
-<p>{{ product.prixTTC }} € TTC</p>
+<p>{{ product.prixTTC|formatPrice }} TTC</p>
 
 {% endif %}
 
