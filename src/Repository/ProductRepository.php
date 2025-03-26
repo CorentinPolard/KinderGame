@@ -42,6 +42,17 @@ class ProductRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function paginateProducts(int $page, int $limit): Paginator
+    {
+        return new Paginator($this->createQueryBuilder('p')
+            // Va chercher dans la bdd $limit (ici 3) produits à partir de produit numéro setFirstResult
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->setHint(Paginator::HINT_ENABLE_DISTINCT, false));
+    }
+
     public function findThreeByCategory($value, $name): array
     {
         return $this->createQueryBuilder('p')
@@ -54,13 +65,39 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function paginateProducts(int $page, int $limit): Paginator
+    public function avgPrice(): float|int
     {
-        return new Paginator($this->createQueryBuilder('p')
-            // Va chercher dans la bdd $limit (ici 3) produits à partir de produit numéro setFirstResult
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit)
+        return $this->createQueryBuilder('p')
+            ->select('AVG(p.price)')
             ->getQuery()
-            ->setHint(Paginator::HINT_ENABLE_DISTINCT, false));
+            ->getSingleScalarResult();
+    }
+
+    public function findLessExpensive(): array
+    {
+        $subQuery = $this->createQueryBuilder('p')
+            ->select('MIN(p.price)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.price = :minPrice')
+            ->setParameter('minPrice', $subQuery)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMostExpensive(): array
+    {
+        $subQuery = $this->createQueryBuilder('p')
+            ->select('MAX(p.price)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.price = :maxPrice')
+            ->setParameter('maxPrice', $subQuery)
+            ->getQuery()
+            ->getResult();
     }
 }
